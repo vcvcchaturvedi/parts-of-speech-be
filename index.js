@@ -3,9 +3,11 @@ import multer from "multer";
 import nlp from "compromise";
 import fs from "fs";
 import timeout from "connect-timeout";
+import cors from "cors";
 
 const app = Express();
 const port = process.env.PORT || 5000;
+app.use(cors({ origin: "https://parts-of-speech-percentages.netlify.app" }));
 app.use(Express.json());
 app.use(
   Express.urlencoded({
