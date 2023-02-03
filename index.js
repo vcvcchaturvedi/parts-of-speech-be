@@ -2,6 +2,7 @@ import Express from "express";
 import multer from "multer";
 import nlp from "compromise";
 import fs from "fs";
+import timeout from "connect-timeout";
 
 const app = Express();
 const port = 5000;
@@ -11,6 +12,7 @@ app.use(
     extended: true,
   })
 );
+app.use(timeout("180s"));
 const storage = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, "./uploads");
@@ -94,7 +96,5 @@ app.post("/upload", upload.single("myFile"), async (req, res) => {
     res.status(500).send({ message: "Error in handling the file." });
   }
 });
-let server = app.listen(port, () =>
-  console.log(`App listening on port ${port}`)
-);
-server.timeout(120000);
+
+app.listen(port, () => console.log(`App listening on port ${port}`));
