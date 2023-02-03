@@ -31,7 +31,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   fileFilter,
   storage,
-  limits: { fileSize: 10000000 },
+  limits: { fileSize: 7000000 },
 });
 const toPercentage = (count, length) => {
   count /= length;
