@@ -50,7 +50,7 @@ app.post("/upload", upload.single("myFile"), async (req, res) => {
     console.log(file.path);
     const text = fs.readFileSync(file.path, { encoding: "utf8" });
     fs.unlink(file.path, () => {});
-    const sentencesArray = text.split(".");
+    const sentencesArray = text.split("\r");
     const lengthSentences = sentencesArray.length;
     let nounSentences = 0;
     let verbSentences = 0;
