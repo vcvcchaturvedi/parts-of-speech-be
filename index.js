@@ -94,4 +94,7 @@ app.post("/upload", upload.single("myFile"), async (req, res) => {
     res.status(500).send({ message: "Error in handling the file." });
   }
 });
-app.listen(port, () => console.log(`App listening on port ${port}`));
+let server = app.listen(port, () =>
+  console.log(`App listening on port ${port}`)
+);
+server.timeout(120000);
