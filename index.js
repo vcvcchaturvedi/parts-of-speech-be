@@ -5,7 +5,7 @@ import fs from "fs";
 import timeout from "connect-timeout";
 
 const app = Express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 app.use(Express.json());
 app.use(
   Express.urlencoded({
