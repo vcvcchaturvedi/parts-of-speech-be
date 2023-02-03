@@ -15,7 +15,7 @@ app.use(
 app.use(timeout("180s"));
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, "./uploads");
+    cb(null, "./");
   },
   filename(req, file, cb) {
     cb(null, `${file.fieldname}-${Date.now()}`);
@@ -30,7 +30,6 @@ const fileFilter = (req, file, cb) => {
 };
 const upload = multer({
   fileFilter,
-  dest: "./file.txt",
   storage,
   limits: { fileSize: 10000000 },
 });
