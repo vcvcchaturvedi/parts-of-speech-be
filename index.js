@@ -46,6 +46,7 @@ app.post("/upload", upload.single("myFile"), async (req, res) => {
     if (!file) {
       return res.send({ message: "Please provide a file to process." });
     }
+    console.log(file.path);
     const text = fs.readFileSync(file.path, { encoding: "utf8" });
     fs.unlink(file.path, () => {});
     const sentencesArray = text.split(".");
